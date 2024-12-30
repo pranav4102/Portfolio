@@ -30,10 +30,12 @@ export default function Home() {
 Seeking an entry-level position to utilize my skills in building 
 scalable and efficient web applications.
           </p> */}
-
+{/* Button wrapped in anchor tag for download */}
+<a href="/resume.pdf" download>
           <Button className="bg-transparent rounded-full border border-lightSky/50 text-lightSky hover:bg-hoverColor hover:text-black hoverEffect">
             Download cv <Download />
           </Button>
+          </a>
           <SocialLinks />
           <Statistics />
         </div>
