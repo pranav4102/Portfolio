@@ -3,7 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, GraduationCap, Briefcase, Code2, User } from "lucide-react";
+import { Calendar, GraduationCap, Code2, User } from "lucide-react";
 import Container from "@/components/Container";
 
 const tabMenu = [

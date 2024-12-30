@@ -1,8 +1,8 @@
 export const NavbarData = [
   { title: "Home", link: "/" },
-  { title: "Certifications", link: "/services" },
   { title: "Resume", link: "/resume" },
   { title: "Work", link: "/work" },
+  { title: "Certifications", link: "/services" },
   { title: "Contact", link: "/contact" },
 ];
 

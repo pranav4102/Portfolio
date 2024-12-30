@@ -3,15 +3,6 @@ import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import SuccessMsg from "./SuccessMsg";
 import { useToast } from "@/hooks/use-toast";
 
@@ -28,6 +19,7 @@ const ContactForm = () => {
     Message: "",
     Service: "",
   });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -38,26 +30,21 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSelectChange = (value: string) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      Service: value,
-    }));
-  };
 
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
 
-    if (!formData.Name.trim() || !formData.Email.trim()) {
+    if (!formData.Name.trim() || !formData.Email.trim() || !formData.Message.trim()) {
       toast({
-        title: "Error: Something is wrong",
-        description: "Please input your name and email to continue",
+        title: "Error: Missing Fields",
+        description: "Please fill in all required fields.",
         variant: "destructive",
       });
       return;
     }
+
     const form = new FormData();
     const currentDateTime = new Date().toLocaleString();
     form.append("Name", formData.Name);
@@ -70,11 +57,6 @@ const ContactForm = () => {
 
     try {
       setLoading(true);
-      toast({
-        title: "Message sending limit is finished",
-        description:
-          "You have finished 50/50 message sent limit from getform. Please enable pro mode to continue",
-      });
       const response = await fetch("https://getform.io/f/bmddogna", {
         method: "POST",
         body: form,
@@ -91,23 +73,26 @@ const ContactForm = () => {
           Message: "",
           Service: "",
         });
+        toast({
+          title: "Message Sent!",
+          description: "Your message has been successfully sent.",
+        });
       } else {
         setStatus("Error! Unable to send your message.");
       }
     } catch (error) {
-      console.error("Error!", error);
+      console.error("Error:", error);
       setStatus("Error! Something went wrong.");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <form className="space-y-4">
-      <h3 className="text-2xl md:text-4xl text-lightSky">
-        Let&apos;s work together
-      </h3>
+      <h3 className="text-2xl md:text-4xl text-lightSky">Let&apos;s work together</h3>
       <p className="text-white/60 text-sm md:text-base">
-      I am eager to contribute my skills and expertise as a full stack developer to your team. With my strong background in software development and passion for continuous learning, I am confident in my ability to drive results and help achieve your company’s goals.
+        I am eager to contribute my skills and expertise as a full stack developer to your team.
       </p>
       <>
         {success ? (
@@ -162,8 +147,8 @@ const ContactForm = () => {
                 onChange={handleChange}
                 rows={5}
               />
-
             </div>
+
             <Button
               disabled={isLoading}
               onClick={handleSubmit}
@@ -172,6 +157,7 @@ const ContactForm = () => {
             >
               {isLoading ? "Submitting message..." : "Send Message"}
             </Button>
+            {status && <p className="text-sm text-red-500">{status}</p>}
           </>
         )}
       </>

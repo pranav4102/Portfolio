@@ -1,6 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 import Container from "@/components/Container";
-import { Mail, MapPinCheck, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import React from "react";
 
 const infoData = [
