@@ -36,7 +36,7 @@ const projects = [
       "A real-time chat application built with the MERN stack (MongoDB, Express.js, React, Node.js), Socket.io for real-time messaging, and TailwindCSS with DaisyUI for a sleek, responsive interface.JWT is used for secure authentication and authorization, with global state management handled by Zustand. The app includes robust error handling",
       stack: ["MERN", "Socket.io", "TailwindCSS", "Daisy UI", "Zustand"],
     image: projectOne,
-    liveUrl: "https://chat-app-vibe-chat.onrender.com/login",
+    liveUrl: "https://chat-app-vibe-chat.onrender.com",
     githubUrl: "https://github.com/pranav4102/Chat-App-Vibe-Chat",
   },
   {
@@ -47,7 +47,7 @@ const projects = [
       "A sleek task management application that helps users organize their daily activities, set priorities, and track progress. Built with React and Redux for state management.",
       stack: ["PHP", "Bootstrap", "SCSS", "JavaScript", "HTML", "CSS"],
     image: projectTwo,
-    liveUrl: "https://unavagam-pranav.netlify.app/",
+    liveUrl: "https://unavagam-pranav.netlify.app",
     githubUrl: "https://github.com/pranav4102/Unavagam-restaurant-Website",
   },
   {
